@@ -1,18 +1,28 @@
 {
-  "name": "withStyles",
-  "version": "1.0.0",
-  "description": "HoC for Critical CSS",
-  "main": "index.js",
-  "author": "NB ",
+  "name": "react-with-css",
+  "version": "1.0.2",
+  "description": "A higher order component for tracking components with styles dependencies",
+  "main": "lib/index.js",
+  "author": "Nhan Bui <imouto1994@gmail.com>",
   "license": "MIT",
+  "repository": "imouto1994/react-with-css",
   "scripts": {
     "build": "babel src/ -d lib/",
+    "lint": "eslint src index.js babel.js",
+    "format": "prettier --trailing-comma es5 --write '{src}/**/*.js'",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "prepublish": "yarn build",
+    "precommit": "lint-staged"
   },
-  "dependencies": {
-    "react": "15.5.4"
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --trailing-comma es5",
+      "git add"
+    ]
   },
+  "dependencies": {},
   "devDependencies": {
+    "babel": "6.23.0",
     "babel-cli": "6.24.1",
     "babel-core": "6.24.1",
     "babel-eslint": "7.2.3",
@@ -20,7 +30,21 @@
     "babel-preset-es2016": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
+    "babel-register": "6.24.1",
+    "babel-runtime": "6.23.0",
     "eslint": "3.19.0",
-    "eslint-plugin-react": "7.0.1"
+    "eslint-config-google": "0.8.0",
+    "eslint-config-prettier": "2.1.1",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-jsx-a11y": "5.0.3",
+    "eslint-plugin-react": "7.0.1",
+    "husky": "0.13.4",
+    "lint-staged": "3.6.1",
+    "lodash": "4.17.4",
+    "prettier": "1.4.4",
+    "react": "15.5.4"
+  },
+  "peerDependencies": {
+    "lodash": "*"
   }
 }
