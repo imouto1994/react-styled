@@ -31,7 +31,7 @@ export default function({ types: t, template }) {
                 return;
               }
               const exportParent = path.find(path => path.isExportDefaultDeclaration() || path.isExportNamedDeclaration());
-              if (parent != null) {
+              if (exportParent != null) {
                 let hoc = hocTemplate({
                   HOC: programState.addImport("withStyles", "default", "withStyles"),
                   MODULE: path.node
