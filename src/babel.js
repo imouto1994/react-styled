@@ -1,3 +1,9 @@
+/**
+ * [description]
+ * @param {[type]} options.types: t [description]
+ * @param {[type]} options.template [description]
+ * @return {[type]} [description]
+ */
 export default function({ types: t, template }) {
   const hocTemplate = template(`HOC(__filename)(MODULE)`);
 
@@ -5,7 +11,7 @@ export default function({ types: t, template }) {
     visitor: {
       Program(path, programState) {
         const state = {
-          hasCssImport: false
+          hasCssImport: false,
         };
         // Check if file has any CSS import
         path.traverse(
@@ -15,7 +21,7 @@ export default function({ types: t, template }) {
               if (source.match(/(\.css)$/) != null) {
                 state.hasCssImport = true;
               }
-            }
+            },
           },
           state
         );
@@ -30,18 +36,26 @@ export default function({ types: t, template }) {
               if (!path.isIdentifier()) {
                 return;
               }
-              const exportParent = path.find(path => path.isExportDefaultDeclaration() || path.isExportNamedDeclaration());
+              const exportParent = path.find(
+                path =>
+                  path.isExportDefaultDeclaration() ||
+                  path.isExportNamedDeclaration()
+              );
               if (exportParent != null) {
                 let hoc = hocTemplate({
-                  HOC: programState.addImport("withStyles", "default", "withStyles"),
-                  MODULE: path.node
+                  HOC: programState.addImport(
+                    "withStyles",
+                    "default",
+                    "withStyles"
+                  ),
+                  MODULE: path.node,
                 }).expression;
                 path.replaceWith(hoc);
               }
             });
-          }
+          },
         });
-      }
-    }
+      },
+    },
   };
 }
