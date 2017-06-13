@@ -44,9 +44,9 @@ export default function({ types: t, template }) {
               if (exportParent != null) {
                 let hoc = hocTemplate({
                   HOC: programState.addImport(
-                    "withStyles",
+                    "react-with-css",
                     "default",
-                    "withStyles"
+                    "withCSS"
                   ),
                   MODULE: path.node,
                 }).expression;

@@ -1,6 +1,6 @@
 {
   "name": "react-with-css",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A higher order component for tracking components with styles dependencies",
   "main": "lib/index.js",
   "author": "Nhan Bui <imouto1994@gmail.com>",
